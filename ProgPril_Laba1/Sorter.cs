@@ -4,6 +4,7 @@ namespace ProgPril_Laba1
 {
     abstract class Sorter
     {
+        Object[] obj;
         protected void doSort()
         {
             for(int i = 0; i<GetLenght();i++)
@@ -17,9 +18,14 @@ namespace ProgPril_Laba1
         }
         public abstract int GetLenght();
         public abstract bool Compare(int a , int b);
-        public abstract void Swap(int i, int j);
+        private void Swap(int i, int j)
+        {
+            Object A = obj[i];
+            obj[i] = obj[j];
+            obj[j]=A;
+        }
     }
-    class IntSorter:Sorter
+    class IntSorter : Sorter
     {
         int[] array;
 
@@ -45,18 +51,18 @@ namespace ProgPril_Laba1
             array[i] = array[j];
             array[j] = a;
         }
-        
+
         public void Sort()
         {
             doSort();
         }
-        
+
         public int GetElem(int a)
         {
             return array[a];
         }
     }
-    class RectSorter : Sorter
+    class RectangleSorter : Sorter
     {
         Rectangle[] rectArray;
 
@@ -65,7 +71,7 @@ namespace ProgPril_Laba1
             return rectArray[a];
         }
 
-        public RectSorter(Rectangle[] rectArray)
+        public RectangleSorter(Rectangle[] rectArray)
         {
             this.rectArray = rectArray;
         }
