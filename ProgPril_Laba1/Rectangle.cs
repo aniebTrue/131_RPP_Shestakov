@@ -6,6 +6,12 @@ namespace ProgPril_Laba1
     {
        int h, w;
 
+
+		public Rectangle()
+		{
+			this.h = 0;
+			this.w = 0;
+		}
        public Rectangle(int h, int w)
         {
             this.h = h;

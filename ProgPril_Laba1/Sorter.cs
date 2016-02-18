@@ -45,12 +45,12 @@ namespace ProgPril_Laba1
             return false;
         }
 
-        public override void Swap(int i, int j)
-        {
-            int a = array[i];
-            array[i] = array[j];
-            array[j] = a;
-        }
+//        public override void Swap(int i, int j)
+//        {
+//            int a = array[i];
+//            array[i] = array[j];
+//            array[j] = a;
+//        }
 
         public void Sort()
         {
@@ -89,11 +89,11 @@ namespace ProgPril_Laba1
         {
             doSort();
         }
-        public override void Swap(int i, int j)
-        {
-            Rectangle rect = rectArray[i];
-            rectArray[i] = rectArray[j];
-            rectArray[j] = rect;
-        }
+//        public override void Swap(int i, int j)
+//        {
+//            Rectangle rect = rectArray[i];
+//            rectArray[i] = rectArray[j];
+//            rectArray[j] = rect;
+//        }
     }
 }

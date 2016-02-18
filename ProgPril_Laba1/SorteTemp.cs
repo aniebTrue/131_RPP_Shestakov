@@ -2,11 +2,22 @@
 {
     abstract class SorteTemp<T>
     {
-        T[] array;
+        protected T[] array;
+
+		public SorteTemp()
+		{
+			this.array = null;
+		}
+
         public SorteTemp(T[] array)
         {
             this.array = array;
         }
+
+		public T GetElement(int Num)
+		{
+			return array [Num];
+		}
 
         public void doSort()
         {
@@ -15,11 +26,11 @@
                 int min = i;
                 for(int j = i+1; j<this.array.GetLength(0); j++)
                 {
-                    if (IsBiger(array[min], array[i]) == true) SwapByIndex(min, j);
+					if (IsBiger(min,j) == true) SwapByIndex(min, j);
                 }
             }
         }
-        abstract protected bool IsBiger(T a, T b);
+        abstract protected bool IsBiger(int a, int b);
         public void SwapByIndex(int a, int b)
          {
              T c = array[a];
@@ -27,20 +38,43 @@
              array[b]=c;
          }
 
+
     }
     class RectSorter : SorteTemp<Rectangle>
     {
-        Rectangle[] r;
+		
+		public RectSorter()
+		{
+			this.array = null;
+		}
 
-        public RectSorter(Rectangle[] array)
+		public RectSorter(Rectangle[] array)
         {
-            this.r = array;
+            this.array = array;
         }
 
-        protected override bool IsBiger(Rectangle a, Rectangle b)
+		protected override bool IsBiger(int a, int b)
         {
-            if (a.GET_S > b.GET_S) return true;
+			if (array[a].GET_S > array[b].GET_S) return true;
             return false;
         }
     }
+	class IntegerSorter : SorteTemp<int>
+	{
+		public IntegerSorter()
+		{
+			this.array = null;
+		}
+		public IntegerSorter(int[] array)
+		{
+			this.array = array;
+		}
+
+		protected override bool IsBiger(int a, int b)
+		{
+			if (array[a]>array[b]) return true;
+			return false;
+		}
+
+	}
 }
