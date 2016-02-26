@@ -26,16 +26,16 @@
                 int min = i;
                 for(int j = i+1; j<this.array.GetLength(0); j++)
                 {
-					if (IsBiger(min,j) == true) SwapByIndex(min, j);
+					if (IsBiger(array[min],array[j]) == true) Swap(ref array[min],ref array[j]);
                 }
             }
         }
-        abstract protected bool IsBiger(int a, int b);
-        public void SwapByIndex(int a, int b)
+        abstract protected bool IsBiger(T a, T b);
+        public void Swap(ref T a,ref T b)
          {
-             T c = array[a];
-             array[a]=array[b];
-             array[b]=c;
+             T c = a;
+             a = b;
+             b = c;
          }
 
 
@@ -53,10 +53,9 @@
             this.array = array;
         }
 
-		protected override bool IsBiger(int a, int b)
+		protected override bool IsBiger(Rectangle a, Rectangle b)
         {
-			if (array[a].GET_S > array[b].GET_S) return true;
-            return false;
+            return a.Square > b.Square;
         }
     }
 	class IntegerSorter : SorteTemp<int>
@@ -72,8 +71,7 @@
 
 		protected override bool IsBiger(int a, int b)
 		{
-			if (array[a]>array[b]) return true;
-			return false;
+			return a>b;
 		}
 
 	}

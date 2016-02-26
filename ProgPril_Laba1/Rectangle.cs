@@ -27,7 +27,7 @@ namespace ProgPril_Laba1
             }
             Console.WriteLine();
         }
-        public int GET_S
+        public int Square
             {
                 get { return this.h * this.w; }
             }

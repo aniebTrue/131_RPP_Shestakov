@@ -82,7 +82,7 @@ namespace ProgPril_Laba1
 
         public override bool Compare(int a, int b)
         {
-            if (rectArray[a].GET_S > rectArray[b].GET_S) return true;
+            if (rectArray[a].Square > rectArray[b].Square) return true;
             return false;
         }
         public void Sort()
