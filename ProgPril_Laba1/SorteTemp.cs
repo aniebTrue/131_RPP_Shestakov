@@ -1,6 +1,6 @@
 ﻿namespace ProgPril_Laba1
 {
-    abstract class SorteTemp<T>
+    public abstract class SorteTemp<T>
     {
         protected T[] array;
 
