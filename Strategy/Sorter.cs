@@ -1,9 +1,13 @@
-﻿using System;
-using Shapes.Interface;
+﻿using Shapes.Interface;
 
 namespace Sorter
 
 {
+    class SortType<T>
+    {
+        public iSorter<T> SortTypes{ get; set; }
+
+    }
     interface iSorter<T>
     {
         T[] Sort(T[] array);                
@@ -36,7 +40,6 @@ namespace Sorter
         }
 
     }
-
     public class SortRectamgle : SortShapes<IRectangle>
     {
         protected override bool IsBiger(IRectangle a, IRectangle b)
@@ -51,4 +54,5 @@ namespace Sorter
             return 0.5 * a.Height * a.Base > 0.5 * b.Height * b.Base;
         }
     }
+
 }
