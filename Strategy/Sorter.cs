@@ -3,10 +3,13 @@
 namespace Sorter
 
 {
-    class SortType<T>
+    public class Sorter<T>
     {
-        public iSorter<T> SortTypes{ get; set; }
-
+        protected iSorter<T> sortType;
+        public T[] Sort(T[] unsortedArray)
+        {
+            return this.sortType.Sort(unsortedArray);
+        }
     }
     interface iSorter<T>
     {
@@ -32,7 +35,7 @@ namespace Sorter
             return array;
         }
         abstract protected bool IsBiger(T a, T b);
-        public void Swap(ref T a, ref T b)
+        protected void Swap(ref T a, ref T b)
         {
             T c = a;
             a = b;
@@ -40,14 +43,14 @@ namespace Sorter
         }
 
     }
-    public class SortRectamgle : SortShapes<IRectangle>
+    public class SortRectangle : SortShapes<IRectangle>
     {
         protected override bool IsBiger(IRectangle a, IRectangle b)
         {
             return a.Height * a.Width > b.Height * b.Width;
         }
     }
-    public class SortTreangle : SortShapes<ITriangle>
+    public class SortTriangle : SortShapes<ITriangle>
     {
         protected override bool IsBiger(ITriangle a, ITriangle b)
         {
