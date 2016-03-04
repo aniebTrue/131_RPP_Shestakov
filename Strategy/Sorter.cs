@@ -4,43 +4,35 @@ namespace Sorter
 {
     public class Sorter<T>
     {
-        iSorter<T> _sort { get; set; }
+        public iSorter<T> _sort { get; set; }
         public T[] Sort(T[] array)
         {
             return _sort.Sort(array);
         }
-
     }
 
 
 
-    interface iSorter<T>
+    public interface iSorter<T>
     {
         T[] Sort(T[] array);
     }
-
-
-
-
-
-
+    
     public interface ICompare<T>
     {
         bool IsBigger(T a, T b);
     }
     public class SortShapes<T> : iSorter<T>
     {
-        
-        public ICompare<T> _compare { get; set; }
-           
-        public T[] iSorter<T>.Sort(T[] array)
+        public ICompare<T> comp { get; set; }
+        T[] iSorter<T>.Sort(T[] array)
         {           
             for (int i = 0; i < array.GetLength(0); i++)
             {
                 int min = i;
                 for (int j = i + 1; j < array.GetLength(0); j++)
                 {
-                    if (_compare.IsBigger(array[min], array[j]))
+                    if (comp.IsBigger(array[min], array[j]))
                     {
                         Swap(ref array[min], ref array[j]);
                     }
