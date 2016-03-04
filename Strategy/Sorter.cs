@@ -5,7 +5,7 @@ namespace Sorter
     public class Sorter<T>
     {
         iSorter<T> _sort { get; set; }
-        T[] Sort(T[] array)
+        public T[] Sort(T[] array)
         {
             return _sort.Sort(array);
         }
@@ -14,7 +14,7 @@ namespace Sorter
 
 
 
-    public interface iSorter<T>
+    interface iSorter<T>
     {
         T[] Sort(T[] array);
     }
@@ -30,7 +30,8 @@ namespace Sorter
     }
     public class SortShapes<T> : iSorter<T>
     {
-        ICompare<T> _compare { get; set; }
+        
+        public ICompare<T> _compare { get; set; }
            
         public T[] iSorter<T>.Sort(T[] array)
         {           
@@ -54,8 +55,13 @@ namespace Sorter
             b = c;
         }
 
+
+        public void Sort(IRectangle[] rect)
+        {
+            throw new System.NotImplementedException();
+        }
     }
-    class CompareRectangles:ICompare<IRectangle>
+    public class CompareRectangles:ICompare<IRectangle>
         {
 
             public bool IsBigger(IRectangle a, IRectangle b)
@@ -63,7 +69,7 @@ namespace Sorter
                 return a.Height * a.Width > b.Height * b.Width;
             }
         }
-    class CompareTriangle:ICompare<ITriangle>
+    public class CompareTriangle:ICompare<ITriangle>
         {
 
             public bool IsBigger(ITriangle a, ITriangle b)
