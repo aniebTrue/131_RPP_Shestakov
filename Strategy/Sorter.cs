@@ -2,26 +2,44 @@
 
 namespace Sorter
 {
+    public class Sorter<T>
+    {
+        iSorter<T> _sort { get; set; }
+        T[] Sort(T[] array)
+        {
+            return _sort.Sort(array);
+        }
 
-    interface iSorter<T>
+    }
+
+
+
+    public interface iSorter<T>
     {
         T[] Sort(T[] array);
     }
-    interface ICompare<T>
+
+
+
+
+
+
+    public interface ICompare<T>
     {
         bool IsBigger(T a, T b);
     }
-    class SortShapes<T> : iSorter<T>
+    public class SortShapes<T> : iSorter<T>
     {
-        ICompare<T> comparer;
-        T[] iSorter<T>.Sort(T[] array)
-        {
+        ICompare<T> _compare { get; set; }
+           
+        public T[] iSorter<T>.Sort(T[] array)
+        {           
             for (int i = 0; i < array.GetLength(0); i++)
             {
                 int min = i;
                 for (int j = i + 1; j < array.GetLength(0); j++)
                 {
-                    if (comparer.IsBigger(array[min], array[j]))
+                    if (_compare.IsBigger(array[min], array[j]))
                     {
                         Swap(ref array[min], ref array[j]);
                     }
@@ -35,7 +53,9 @@ namespace Sorter
             a = b;
             b = c;
         }
-        class CompareRectangles:ICompare<IRectangle>
+
+    }
+    class CompareRectangles:ICompare<IRectangle>
         {
 
             public bool IsBigger(IRectangle a, IRectangle b)
@@ -43,13 +63,14 @@ namespace Sorter
                 return a.Height * a.Width > b.Height * b.Width;
             }
         }
-        class CompareTriangle:ICompare<ITriangle>
+    class CompareTriangle:ICompare<ITriangle>
         {
 
             public bool IsBigger(ITriangle a, ITriangle b)
             {
-                return 0.5*a.Base * a.Height > 0.5*b.Base * b.Height;
+                return 0.5 * a.Base * a.Height > 0.5 * b.Base * b.Height;
+            }
         }
 
-    }
+
 }
