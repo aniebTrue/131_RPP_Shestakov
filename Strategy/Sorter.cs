@@ -1,74 +1,66 @@
-﻿using Shapes.Interface;
+﻿using System;
+using Shapes.Interface;
 
 namespace Sorter
 {
-    public class Sorter<T>
-    {
-        public iSorter<T> _sort { get; set; }
-        public T[] Sort(T[] array)
-        {
-            return _sort.Sort(array);
-        }
-    }
 
-
-
-    public interface iSorter<T>
-    {
-        T[] Sort(T[] array);
-    }
-    
     public interface ICompare<T>
     {
-        bool IsBigger(T a, T b);
+        int Compere(T x, T y);
     }
-    public class SortShapes<T> : iSorter<T>
+    public class compareInt : ICompare<int>
     {
-        public ICompare<T> comp { get; set; }
-        T[] iSorter<T>.Sort(T[] array)
-        {           
-            for (int i = 0; i < array.GetLength(0); i++)
-            {
-                int min = i;
-                for (int j = i + 1; j < array.GetLength(0); j++)
-                {
-                    if (comp.IsBigger(array[min], array[j]))
-                    {
-                        Swap(ref array[min], ref array[j]);
-                    }
-                }
-            }
-            return array;
+
+        public int Compere(int x, int y)
+        {
+            if (x > y) return 1;
+            if (x < y) return -1;
+            return 0;
         }
-        protected void Swap(ref T a, ref T b)
+    }
+    public class compareRectangle : ICompare<IRectangle>
+    {
+        public int Compere(IRectangle x, IRectangle y)
+        {
+            if (x.Height * x.Width > y.Height * y.Width) return 1;
+            if (x.Height * x.Width < y.Height * y.Width) return -1;
+            return 0;
+        }
+    }
+    public class compareTriangle : ICompare<ITriangle>
+    {
+        public int Compere(ITriangle x, ITriangle y)
+        {
+            if (x.Base * x.Height > y.Base * y.Height) return 1;
+            if (x.Base * x.Height < y.Base * y.Height) return -1;
+            return 0;
+        }
+    }
+
+    public class Sorter<T>
+    {
+        public ICompare<T> _Compare { get; set; }
+
+
+
+        private void Swap(ref T a, ref T b)
         {
             T c = a;
             a = b;
             b = c;
         }
-
-
-        public void Sort(IRectangle[] rect)
+        public T[] Sort(T[] array)
         {
-            throw new System.NotImplementedException();
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                int min = i;
+                for (int j = i + 1; j < array.GetLength(0); j++)
+                {
+                    if (_Compare.Compere(array[min], array[j]) == 1)
+                        Swap(ref array[min], ref array[j]);
+                }
+            }
+            return array;
         }
     }
-    public class CompareRectangles:ICompare<IRectangle>
-        {
-
-            public bool IsBigger(IRectangle a, IRectangle b)
-            {
-                return a.Height * a.Width > b.Height * b.Width;
-            }
-        }
-    public class CompareTriangle:ICompare<ITriangle>
-        {
-
-            public bool IsBigger(ITriangle a, ITriangle b)
-            {
-                return 0.5 * a.Base * a.Height > 0.5 * b.Base * b.Height;
-            }
-        }
-
-
 }

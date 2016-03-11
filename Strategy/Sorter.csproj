@@ -43,9 +43,8 @@
     <Compile Include="Sorter.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Shapes.Mock, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>H:\РПП\Shapes.Mock.dll</HintPath>
+    <Reference Include="Shapes.Mock">
+      <HintPath>..\ProgPril_Laba1\Shapes.Mock.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
