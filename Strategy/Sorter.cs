@@ -10,7 +10,6 @@ namespace Sorter
     }
     public class compareInt : ICompare<int>
     {
-
         public int Compere(int x, int y)
         {
             if (x > y) return 1;
@@ -37,6 +36,7 @@ namespace Sorter
         }
     }
 
+
     public class Sorter<T>
     {
         public ICompare<T> _Compare { get; set; }
@@ -45,22 +45,22 @@ namespace Sorter
 
         private void Swap(ref T a, ref T b)
         {
-            T c = a;
+            var c = a;
             a = b;
             b = c;
         }
-        public T[] Sort(T[] array)
+        public T[] Sort(T[] ar)
         {
-            for (int i = 0; i < array.GetLength(0); i++)
+            for (int i = 0; i < ar.GetLength(0); i++)
             {
                 int min = i;
-                for (int j = i + 1; j < array.GetLength(0); j++)
+                for (int j = i + 1; j < ar.GetLength(0); j++)
                 {
-                    if (_Compare.Compere(array[min], array[j]) == 1)
-                        Swap(ref array[min], ref array[j]);
+                    if (_Compare.Compere(ar[min], ar[j]) == 1) { var a = ar[min]; ar[min] = ar[j]; ar[j] = a; }
+                        
                 }
             }
-            return array;
+            return ar;
         }
     }
 }
