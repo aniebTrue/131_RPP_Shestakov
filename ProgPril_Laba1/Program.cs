@@ -5,7 +5,7 @@ namespace ProgPril_Laba1
 {
     class Program
     {
-        static void Main()
+       static void Main()
         {
             Random rnd = new Random();
             IRectangle[] rectArray = new Shapes.Mock.Mock.Rectangle[10];
@@ -17,14 +17,18 @@ namespace ProgPril_Laba1
                 rectArray[i] = rect;
             }
             Sorter<IRectangle> sort = new Sorter<IRectangle>();
-            compareRectangle context = new compareRectangle();
-            sort._Compare = context;
-            sort.Sort(rectArray);
+            //compareRectangle context = new compareRectangle();
+            //sort.Sort(rectArray, context);
+            Func<IRectangle, IRectangle, int> f = Comp.CompareRect;
+            sort.Sort(rectArray, f);
+
             foreach(Shapes.Mock.Mock.Rectangle r in rectArray)
             {
                 Console.WriteLine(r.Height * r.Width);
             }
             Console.ReadKey();
+            
+            
         }
     }
 }

@@ -3,14 +3,18 @@ using Shapes.Interface;
 
 namespace Sorter
 {
-
+    public interface ISorter<T>
+    {
+        T[] Sort(T[] array, ICompare<T> Comparer);
+        T[] Sort(T[] array, Func<T, T, int> comparison);
+    }
     public interface ICompare<T>
     {
-        int Compere(T x, T y);
+        int Compare(T x, T y);
     }
     public class compareInt : ICompare<int>
     {
-        public int Compere(int x, int y)
+        public int Compare(int x, int y)
         {
             if (x > y) return 1;
             if (x < y) return -1;
@@ -19,7 +23,7 @@ namespace Sorter
     }
     public class compareRectangle : ICompare<IRectangle>
     {
-        public int Compere(IRectangle x, IRectangle y)
+        public int Compare(IRectangle x, IRectangle y)
         {
             if (x.Height * x.Width > y.Height * y.Width) return 1;
             if (x.Height * x.Width < y.Height * y.Width) return -1;
@@ -28,39 +32,70 @@ namespace Sorter
     }
     public class compareTriangle : ICompare<ITriangle>
     {
-        public int Compere(ITriangle x, ITriangle y)
+        public int Compare(ITriangle x, ITriangle y)
         {
             if (x.Base * x.Height > y.Base * y.Height) return 1;
             if (x.Base * x.Height < y.Base * y.Height) return -1;
             return 0;
         }
     }
-
-
-    public class Sorter<T>
+    public class Comp
     {
-        public ICompare<T> _Compare { get; set; }
-
-
-
-        private void Swap(ref T a, ref T b)
+        public static int CompareInt(int a, int b)
         {
-            var c = a;
-            a = b;
-            b = c;
+            if (a > b) return 1;
+            if (a < b) return -1;
+            return 0;
         }
-        public T[] Sort(T[] ar)
+        public static int CompareRect(IRectangle a, IRectangle b)
         {
-            for (int i = 0; i < ar.GetLength(0); i++)
+            if (a.Height * a.Width > b.Height * b.Width) return 1;
+            if (a.Height * a.Width < b.Height * b.Width) return -1;
+            return 0;
+        }
+    }
+
+    public class Sorter<T>:ISorter<T>
+    {
+
+        public T[] Sort(T[] array, Func<T, T, int> comparison)
+        {
+            for (int i = 0; i < array.GetLength(0); i++)
             {
                 int min = i;
-                for (int j = i + 1; j < ar.GetLength(0); j++)
+                for (int j = i + 1; j < array.GetLength(0); j++)
                 {
-                    if (_Compare.Compere(ar[min], ar[j]) == 1) { var a = ar[min]; ar[min] = ar[j]; ar[j] = a; }
+                    if (comparison(array[min], array[j]) == 1)
+                    {
+                        var a = array[min];
+                        array[min] = array[j];
+                        array[j] = a;
+                    }
+
+                }
+
+            }
+            return array;
+        }
+
+        public T[] Sort(T[] array, ICompare<T> comparer)
+        {
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                int min = i;
+                for (int j = i + 1; j < array.GetLength(0); j++)
+                {
+                    if (comparer.Compare(array[min], array[j]) == 1)
+
+                    {
+                        var a = array[min];
+                        array[min] = array[j];
+                        array[j] = a;
+                    }
                         
                 }
             }
-            return ar;
+            return array;
         }
     }
 }
