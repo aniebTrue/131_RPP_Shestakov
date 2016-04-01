@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorter", "Strategy\Sorter.c
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsSocialNet", "EventsSocialNet\EventsSocialNet.csproj", "{FF8F53D7-43C2-43B6-B067-D1A580A13D64}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBillingDataAccess", "ProjectBillingDataAccess\ProjectBillingDataAccess.csproj", "{08B5ADE6-B11B-4238-BEDA-AA37C9918FD0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBilling.Monolithic", "ProjectBilling.Monolithic\ProjectBilling.Monolithic.csproj", "{42692B6E-5711-4978-B45A-8E1FDBD19035}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{FF8F53D7-43C2-43B6-B067-D1A580A13D64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF8F53D7-43C2-43B6-B067-D1A580A13D64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF8F53D7-43C2-43B6-B067-D1A580A13D64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08B5ADE6-B11B-4238-BEDA-AA37C9918FD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08B5ADE6-B11B-4238-BEDA-AA37C9918FD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08B5ADE6-B11B-4238-BEDA-AA37C9918FD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08B5ADE6-B11B-4238-BEDA-AA37C9918FD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42692B6E-5711-4978-B45A-8E1FDBD19035}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42692B6E-5711-4978-B45A-8E1FDBD19035}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42692B6E-5711-4978-B45A-8E1FDBD19035}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42692B6E-5711-4978-B45A-8E1FDBD19035}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
