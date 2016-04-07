@@ -2,51 +2,36 @@
 
 namespace EventsSocialNet
 {
-    delegate void UserAction(User person);
-
-    class userEvent
-    {
-        public event UserAction Alert;
-
-        public void OnUserActions(User user)
-        {
-            Alert(user);
-        }
-    }
-
     class User
     {      
-        int ID;
         protected string name, secondName;
-        //private DateTime bDate;
+        DateTime bDate;
 
-        public User(int ID, string Name, string SecondName)
+        event Action<User, string> PublicationAlertEvent;
+
+        public User(string Name, string SecondName, DateTime bDate)
         {
-            this.ID = ID;
             this.name = Name;
             this.secondName = SecondName;
+            this.bDate = bDate;
         }
         public string FullName
         {
             get { return this.name + " " + this.secondName; }
         }
-
-        public void PublicationRecord(string record)
-        {
-            Console.WriteLine("Пользователь {0} написал: {1}", this.FullName, record);
+        public void MakePublication(string str)
+        {            
+            Console.WriteLine(str);
         }
-
-        public void RecordAlert(User person)
+        public void PublicationAlert(User person, string str)
         {
-            Console.WriteLine("Уважаемый {0}", this.FullName);
-            Console.WriteLine("Записи пользователя {0} обновлены!", person.FullName);
+            Console.WriteLine("Уважаемый пользователь {0}, пользователь {1} написал:\n\"{2}\"", this.FullName,person.FullName,str);
         }
-
-        public void RаteRecord(User user)
+        public void Subscribe(User person)
         {
-            Console.WriteLine("Уважаемый {0} {1}", this.name, this.secondName);
-            Console.WriteLine("Пост был оценен пользователем: {0}", user.FullName);
+            this.PublicationAlertEvent += person.PublicationAlert;
         }
     }    
+
 
 }

@@ -6,17 +6,9 @@ namespace EventsSocialNet
     {
         static void Main(string[] args)
         {                    
-            User user1 = new User(1,"Иван","Смирнов");
-            User user2 = new User(2, "Дмитрий", "Дрозд");
-
-            userEvent evn = new userEvent();
-
-            evn.Alert += user1.RecordAlert;
-
-            evn.OnUserActions(user2);
-
-            Console.ReadLine();
-
+            User user1 = new User("Иван","Смирнов",new DateTime(2001,1,1));
+            User user2 = new User("Ольга", "Смирнова", new DateTime(2002, 1, 1));
+            user1.MakePublication(user1.FullName);
         }
     }
 }
