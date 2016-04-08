@@ -1,0 +1,28 @@
+﻿<Window x:Class="StoreApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StoreApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid Background="Beige">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="258*"/>
+            <ColumnDefinition Width="259*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*"></RowDefinition>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <DataTemplate x:Key="ItemName">
+                <TextBlock Text="{Binding Path=ItemName}"/>
+            </DataTemplate>
+        </Grid.Resources>
+        <ListBox x:Name="ItemsListBox" HorizontalAlignment="Left" ItemsSource="{Binding}" ItemTemplate="{StaticResource ItemName}" Height="241" Margin="10,10,0,0" VerticalAlignment="Top" Width="238">
+            </ListBox>
+        <Button x:Name="button" Content="Add new item" HorizontalAlignment="Left" Margin="154,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="94" Height="23" Click="button_Click"/>
+        <TextBox x:Name="NewItemNameBox" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="139"/>
+    </Grid>
+</Window>
