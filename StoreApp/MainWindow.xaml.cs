@@ -29,8 +29,10 @@ namespace StoreApp
             lItems.Add(new Item("RAM", 3));
             lItems[0].AddItemOnStore(10);
             lItems[1].AddItemOnStore(12);
+            ItemsListBox.ItemsSource = lItems;
 
         }
+
 
 
 
@@ -40,6 +42,7 @@ namespace StoreApp
             Item sItem = ItemsListBox.SelectedItem as Item;
             sItem.SellItem(N);
             ItemsListBox.SelectedItem = sItem;
+            CurrentItemCountTextBox.Text = sItem.CurentItemCount.ToString();
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -48,12 +51,19 @@ namespace StoreApp
             Item sItem = ItemsListBox.SelectedItem as Item;
             sItem.AddItemOnStore(N);
             ItemsListBox.SelectedItem = sItem;
+            CurrentItemCountTextBox.Text = sItem.CurentItemCount.ToString();
         }
 
         private void AddNewItemButton_Click(object sender, RoutedEventArgs e)
         {
             lItems.Add(new Item(NewItemNameBox.Text, lItems.Count));
-            ItemsListBox.ItemsSource = lItems;
+            ItemsListBox.Items.Refresh();
+        }
+
+        private void ItemsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var sItem = ItemsListBox.SelectedItem as Item;
+            CurrentItemCountTextBox.Text = sItem.CurentItemCount.ToString();
         }
     }
 }
