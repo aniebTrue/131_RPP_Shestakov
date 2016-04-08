@@ -1,0 +1,44 @@
+﻿<Window x:Class="StoreApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StoreApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" MinHeight="350" MaxHeight="350" MinWidth="525" MaxWidth="525">
+    <Grid Background="Beige">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="258*"/>
+            <ColumnDefinition Width="259*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*"></RowDefinition>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <ListBox x:Name="ItemsListBox" ItemsSource="{Binding}" Margin="10">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding ItemName}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>   
+         </ListBox>
+        <Button x:Name="button" Click="AddNewItemButton_Click" Content="Add new item" HorizontalAlignment="Left" Margin="154,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="94" Height="23" />
+        <TextBox x:Name="NewItemNameBox" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="139"/>
+        <StackPanel Grid.Column="1" Grid.Row="0" Margin="10">
+            <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Остаток на складе:" VerticalAlignment="Bottom"/>
+                <TextBlock  x:Name="CurrentItemCountTextBox" Text="{Binding SelectedItem.CurentItemCount, ElementName=ItemsListBox, Mode=OneWay}" Width="55" Margin="25,0,0,0"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="1" Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <Button Name="SellButton"   Click="SellButton_Click" Content="Sell" Width="50" ></Button>
+                <Button Name="AddButton" Click="AddButton_Click"  Content="Add" Width="50" Margin="10,0,0,0"></Button>
+                <TextBox Name="ItemNumber" Width="50" Margin="10,0,0,0"></TextBox>
+
+            </StackPanel>
+            
+        </StackPanel>
+    </Grid>
+</Window>

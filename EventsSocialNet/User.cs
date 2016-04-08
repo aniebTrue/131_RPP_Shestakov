@@ -2,54 +2,36 @@
 
 namespace EventsSocialNet
 {
-    class UserAction
-    {
-        public void Alert()
-        {
-            Console.WriteLine("Тревога");
-        }
-    }
-    ф
-
     class User
-    {
-        int ID;
-        private string name, secondName;
-        //private DateTime bDate;
+    {      
+        protected string name, secondName;
+        DateTime bDate;
 
-        public delegate void MethodContainer();
+        event Action<User, string> PublicationAlertEvent;
 
-        public event MethodContainer Alert;
-
-        public User(int ID, string Name, string SecondName)
+        public User(string Name, string SecondName, DateTime bDate)
         {
-            this.ID=ID;
-            this.name=Name;
-            this.secondName=SecondName;
+            this.name = Name;
+            this.secondName = SecondName;
+            this.bDate = bDate;
         }
         public string FullName
         {
-            get{return this.name+" "+this.secondName;}
+            get { return this.name + " " + this.secondName; }
         }
+        public void MakePublication(string str)
+        {            
+            Console.WriteLine(str);
+        }
+        public void PublicationAlert(User person, string str)
+        {
+            Console.WriteLine("Уважаемый пользователь {0}, пользователь {1} написал:\n\"{2}\"", this.FullName,person.FullName,str);
+        }
+        public void Subscribe(User person)
+        {
+            this.PublicationAlertEvent += person.PublicationAlert;
+        }
+    }    
 
-        public void PublicationRecord(string record)
-        {
-            Console.WriteLine("Пользователь {0} написал: {1}", this.FullName, record);
-            if (Alert != null)
-            {
-                Alert();
-            }
-        }
-        public void RevordAlert(User person)
-        {
-            Console.WriteLine("Уважаемый {0} {1}", this.name, this.secondName);
-            Console.WriteLine("Записи пользователя {0} {1} обновлены!", person.name,person.secondName);
-        }
 
-        public void RаteRecord(User user)
-        {
-            Console.WriteLine("Уважаемый {0} {1}", this.name, this.secondName);
-            Console.WriteLine("Пост был оценен пользователем: {0}",user.FullName);
-        }
-    }
 }
