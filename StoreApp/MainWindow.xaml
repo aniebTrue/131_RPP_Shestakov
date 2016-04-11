@@ -16,7 +16,7 @@
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
 
-        <ListBox x:Name="ItemsListBox" ItemsSource="{Binding}" Margin="10">
+        <ListBox x:Name="ItemsListBox" ItemsSource="{Binding}" Margin="10" SelectionChanged="ItemsListBox_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding ItemName}"/>
