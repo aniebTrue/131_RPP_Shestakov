@@ -30,6 +30,8 @@ namespace StoreApp
             lItems[0].AddItemOnStore(10);
             lItems[1].AddItemOnStore(12);
 
+
+
         }
 
 
