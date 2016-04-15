@@ -2,23 +2,25 @@
 {
     interface IItem
     {
-        int ItemID { get; set; }
         string ItemName { get; set; }
+        double ItemCost { get; set; }
         void SellItem(int itemCount);
         void AddItemOnStore(int itemCount);
 
     }
     class Item : IItem
     {
-        public Item(string name, int ID)
+        public Item(string name, double itemCost)
         {
-            this.ItemID = ID;
             this.ItemName = name;
             this.CurentItemCount = 0;
+            this.ItemCost = itemCost;
         }
-        public int ItemID { get; set; }
+
+        public double ItemCost { get; set; }
         public string ItemName { get; set; }
         public int CurentItemCount { get; private set; }
+
         public void SellItem(int itemCount)
         {
             if (this.CurentItemCount - itemCount >= 0) this.CurentItemCount -= itemCount;
