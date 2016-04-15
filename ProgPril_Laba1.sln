@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgPril_Laba1", "ProgPril_Laba1\ProgPril_Laba1.csproj", "{C0386327-9DD5-42DA-9262-B45E46832E65}"
 EndProject
@@ -14,6 +14,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBilling.Monolithic", "ProjectBilling.Monolithic\ProjectBilling.Monolithic.csproj", "{42692B6E-5711-4978-B45A-8E1FDBD19035}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreApp", "StoreApp\StoreApp.csproj", "{62A90B7E-AAFE-4190-BBE5-30A13C3E3B88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBilling.DataAccess", "ProjectBilling.DataAccess\ProjectBilling.DataAccess.csproj", "{5254D684-BE3F-4603-AFC2-52A332B7A1F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcProjectBilling", "MvcProjectBilling\MvcProjectBilling.csproj", "{449C798C-BE2C-4001-A482-1F608ED12C0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{62A90B7E-AAFE-4190-BBE5-30A13C3E3B88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62A90B7E-AAFE-4190-BBE5-30A13C3E3B88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62A90B7E-AAFE-4190-BBE5-30A13C3E3B88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5254D684-BE3F-4603-AFC2-52A332B7A1F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5254D684-BE3F-4603-AFC2-52A332B7A1F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5254D684-BE3F-4603-AFC2-52A332B7A1F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5254D684-BE3F-4603-AFC2-52A332B7A1F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{449C798C-BE2C-4001-A482-1F608ED12C0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{449C798C-BE2C-4001-A482-1F608ED12C0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{449C798C-BE2C-4001-A482-1F608ED12C0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{449C798C-BE2C-4001-A482-1F608ED12C0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
